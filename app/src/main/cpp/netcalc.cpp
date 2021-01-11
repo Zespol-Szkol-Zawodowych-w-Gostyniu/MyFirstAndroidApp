@@ -4,7 +4,7 @@
 
 #include "netcalc.h"
 
-#pragma once
+//#pragma once
 
 
 
