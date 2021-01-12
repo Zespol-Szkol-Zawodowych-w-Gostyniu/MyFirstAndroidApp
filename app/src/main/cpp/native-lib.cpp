@@ -15,8 +15,10 @@ Java_com_example_myapplication_MainActivity_stringFromJNI(
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_calcRun(JNIEnv *env, jobject thiz) {
-    ModuleNet::calc obj = ModuleNet::calc("192.168.25.130/24");
-    std::string s="jhgjhgjgjhgj";
+Java_com_example_myapplication_MainActivity_calcRun(JNIEnv *env, jobject thiz, jstring ip) {
+    const char *a = env->GetStringUTFChars(ip, NULL);
+    std::string b = (std::string)a;
+    ModuleNet::calc obj = ModuleNet::calc(b);
+    std::string s = obj.getsubnet();
     return env->NewStringUTF(s.c_str());
 }

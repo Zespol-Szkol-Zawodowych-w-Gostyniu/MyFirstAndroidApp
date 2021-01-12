@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
 import android.view.View;
@@ -24,13 +25,14 @@ public class MainActivity extends AppCompatActivity {
         tv.setText(stringFromJNI());
     }
     public void calcSubnetEvent(View view){
+        EditText ip=findViewById(R.id.ipAddressText);
         TextView wynik=findViewById(R.id.subnetView);
-        wynik.setText(calcRun());
+        wynik.setText(calcRun(ip.getText().toString()));
     }
     /**
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
     public native String stringFromJNI();
-    public native String calcRun();
+    public native String calcRun(String ip);
 }
